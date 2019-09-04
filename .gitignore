@@ -338,3 +338,5 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+/Riddle_v1/Riddle/bower.json
+/Riddle_v1/Riddle/libman.json
