@@ -1,0 +1,89 @@
+﻿@using Riddle.Models;
+@model List<Riddle1>
+
+<div class="RiddleList">
+    <h1>Liste des énigmes</h1>
+</div>
+<div class="BarCat">
+    <form asp-controller="Riddle" asp-action="RiddleList" method="get">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01">Selectionner une catégorie</label>
+            </div>
+            <select name="idCategory" class="custom-select" id="inputGroupSelect01">
+                <option selected>Aucune catégorie sélectionnée</option>
+                @foreach (Category c in (ViewBag.Category as List<Category>))
+                {
+                    <option value="@c.Id">@c.Titre</option>
+                }
+            </select>
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="submit">Valider</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="row">
+
+    @if (Model.Count == 0)
+    {
+        <div class="ListEnigme">
+            <div class="text-center">
+                <div>
+                    <h4>Aucune énigme</h4>
+                </div>
+                <div class="ImageRiddleList">
+                    <img src="~/Images/Logos/R-Linux.png" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div class="ListEnigme">
+        @foreach (Riddle1 r in Model)
+        {
+            @*<div class="carre3">
+                    <a asp-action="RiddleDetail" asp-controller="Riddle" asp-route-id="@r.Id">
+                        <div>
+                            <h4>@r.Titre</h4>
+                        </div>
+                        <div class="ImageRiddleList">
+                            <img src="~/@r.Image[0].Url" alt="...">
+                        </div>
+
+                    </a>
+                </div>*@
+        <div class="container EnigmaList">
+            <form asp-action="RiddleDetail" asp-controller="Riddle" asp-route-id="@r.Id">
+                <button type="submit" class="btn btn-warning btn-lg btn-block">@r.Titre</button>
+            </form>
+            @if (ViewBag.UserName == "Admin")
+            {
+                <a asp-controller="Riddle" asp-action="DeleteRiddle" asp-route-id="@r.Id">Supprimer</a>
+            }
+            </div>
+        }
+    </div>
+</div>
+
+<p></p>
+
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+        <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+            <a class="page-link" href="#">Next</a>
+        </li>
+    </ul>
+</nav>
+
+
+
+
+

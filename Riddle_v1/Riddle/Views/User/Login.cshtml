@@ -1,0 +1,92 @@
+﻿@if (ViewBag.Logged == true)
+{
+    <div class="alert alert-primary text-center alertDejaConnecter" role="alert">
+        <p>Vous êtes déjà inscrit.</p>
+        <p>Veuillez vous déconnecter pour créer une nouvelle inscription.</p>
+    </div>
+}
+else
+{
+    <div class="Inscription">
+        <div>
+            <h2>Inscrivez-vous !</h2>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                @if ((ViewBag.errors != null))
+                {
+                    if ((ViewBag.errors as List<string>).Count > 0)
+                    {
+                        <div class="row">
+                            <div class="col-lg-12 alert alert-secondary text-center" role="alert">
+                                @foreach (string e in (ViewBag.errors as List<string>))
+                                {
+                                    <div class="col-lg-12">
+                                        @e
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    }
+                }
+
+                @if (ViewBag.Inscription != null)
+                {
+                    if (ViewBag.Inscription)
+                    {
+                        <div class="row">
+                            <div class="col-lg-12 alert alert-primary text-center" role="alert">
+                                @ViewBag.Message
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+
+
+
+        <form asp-controller="User" asp-action="Register" method="post">
+            <div class="row ChampsInscription">
+                <div class="col-lg-12">
+                    <input value="@Model.Name" name="name" type="text" placeholder="Veuillez saisir votre nom" class="form-control text-center" />
+                </div>
+            </div>
+            <div class="row ChampsInscription">
+                <div class="col-lg-12">
+                    <input value="@Model.FirstName" name="firstName" type="text" placeholder="Veuillez saisir votre prénom" class="form-control text-center" />
+                </div>
+            </div>
+            <div class="row ChampsInscription">
+                <div class="col-lg-12">
+                    <input value="@Model.UserName" name="userName" type="text" placeholder="Veuillez saisir votre pseudo" class="form-control text-center" />
+                </div>
+            </div>
+            <div class="row ChampsInscription">
+                <div class="col-lg-12">
+                    <input value="@Model.Email" name="email" type="text" placeholder="Veuillez saisir votre email" class="form-control text-center" />
+                </div>
+            </div>
+            <div class="row ChampsInscription">
+                <div class="col-lg-12">
+                    <input value="@Model.Phone" name="phone" type="text" placeholder="Veuillez saisir votre numéro de téléphone" class="form-control text-center" />
+                </div>
+            </div>
+            <div class="row ChampsInscription">
+                <div class="col-lg-12">
+                    <input value="@Model.Password" name="password" type="password" placeholder="Veuillez saisir votre mot de passe" class="form-control text-center" />
+                </div>
+            </div>
+            <div class="row ChampsInscription">
+                <div class="col-lg-12">
+                    <input type="password" name="cPassword" placeholder="Veuillez confirmer votre mot de passe" class="form-control text-center" />
+                </div>
+            </div>
+            <div class="row ChampsInscription">
+                <div class="col-lg-12">
+                    <button class="btn btn-secondary btn-lg btn-block btnInscription" type="submit">Veuillez confirmer votre inscription</button>
+                </div>
+            </div>
+        </form>
+    </div>
+}

@@ -1,0 +1,108 @@
+﻿@using Riddle.Models;
+@model List<Category>;
+
+
+@if ((ViewBag.errors != null))
+{
+    if ((ViewBag.errors as List<string>).Count > 0)
+    {
+        <div class="alert alert-danger">
+            @foreach (string e in (ViewBag.errors as List<string>))
+            {
+                <div class="alerte">
+                    @e
+                </div>
+            }
+        </div>
+    }
+}
+
+@if (ViewBag.Category != null)
+{
+    if (ViewBag.Category)
+    {
+        <div class="alert alert-success">
+            <div class="alerte">
+                @ViewBag.Message
+            </div>
+        </div>
+    }
+}
+
+<div class="row col-lg-12">
+
+    <div class="col-lg-6">
+        <div class="container-fluid">
+            <div>
+                <h2>Liste des catégories</h2>
+            </div>
+            <div class="row">
+                @if (Model.Count == 0)
+                {
+                    <div class="AddCat">
+                        <div class="carre">
+                            <a asp-controller="Category" asp-action="CategoryList">Aucune Catégorie</a>
+                            <div class="ImageAddCat">
+                                <img src="~/Images/Logos/R-Linux.png" />
+                            </div>
+                        </div>
+                    </div>
+                }
+                <div class="AddCat">
+                    @foreach (Category c in Model)
+                    {
+
+                        <div class="carre">
+                            <a asp-controller="Category" asp-action="CategoryList">@c.Titre</a>
+                            <div class="ImageAddCat">
+                                <img src="~/Images/Logos/R-Linux.png" />
+                            </div>
+                            <a asp-controller="Category" asp-action="DeleteCategory" asp-route-id="@c.Id">Supprimer</a>
+                        </div>
+
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="container-fluid">
+            <div>
+                <h2>Ajouter une catégorie</h2>
+            </div>
+
+            <form asp-action="CategoryRegister" asp-controller="Category" method="post">
+                <div class="AjouterCategorie">
+                    <div class=" AddCat2">
+                        <input class="form-control form-control-lg" name="Titre" type="text" placeholder="Nom de la catégorie">
+                        @*<input class="inputCat" type="text" name="Titre" placeholder="Nom de la catégorie" />*@
+                    </div>
+                    <div class=" AddCat2">
+                        <p>Ajouter une image :</p>
+                        <input class="form-control form-control-lg" name="CatImg" type="file" placeholder="Ajouter une image">
+                        @*<input type="file" name="image" class="form-control" />*@
+                    </div>
+
+                    <div class="input-group">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
+                            <label class="custom-file-label" for="inputGroupFile04"></label>
+                        </div>
+                    </div>
+
+                    @*<div class="input-group mb-3">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="inputGroupFile02">
+                                <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Choisir une image</label>
+                            </div>
+                        </div>*@
+
+                    <div class=" AddCat2">
+                        <button type="submit" class="btn btn-secondary btn-lg btn-block">Confirmer</button>
+                        @*<button class="btnCat" type="submit">Ajouter</button>*@
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

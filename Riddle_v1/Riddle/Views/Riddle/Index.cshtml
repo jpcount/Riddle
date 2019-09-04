@@ -1,0 +1,28 @@
+﻿@using Riddle.Models;
+@model List<User>;
+<div class="Index">
+    <div class="Carte">
+        <h5 class="card-title text-center">Ajouter une catégorie</h5>
+        <a asp-controller="Category" asp-action="CategoryAdd">
+            <img class="card-img-top" src="~/Images/Logos/Category.png" alt="...">
+        </a>
+    </div>
+    <div class="Carte">
+        <h5 class="card-title text-center">Ajouter une énigme</h5>
+        <a asp-controller="Riddle" asp-action="RiddleDeposit">
+            <img class="card-img-top" src="~/Images/Logos/Quoi.png" alt="...">
+        </a>
+    </div>
+    <div class="Carte">
+        <h5 class="card-title text-center">Liste des utilisateurs</h5>
+        <a asp-controller="User" asp-action="UserListGet">
+            <img class="card-img-top" src="~/Images/Logos/Liste2.jpg" alt="...">
+        </a>
+    </div>
+    <div class="Carte">
+        <h5 class="card-title text-center">Play</h5>
+        <a asp-controller="Riddle" asp-action="RiddleList">
+            <img class="card-img-top" src="~/Images/Logos/play.png" alt="...">
+        </a>
+    </div>
+</div>

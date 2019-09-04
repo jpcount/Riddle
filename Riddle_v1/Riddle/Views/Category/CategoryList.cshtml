@@ -1,0 +1,34 @@
+﻿@using Riddle.Models;
+@model List<Category>;
+
+<div class="CatList">
+    <h1>Liste des catégories</h1>
+</div>
+
+<div class="row">
+
+
+    @if (Model.Count == 0)
+    {
+        <div class="AddCat">
+            <div class="carre">
+                <a asp-controller="Category" asp-action="CategoryList">Aucune catégorie</a>
+                <div class="ImageAddCat">
+                    <img src="~/Images/Logos/R-Linux.png" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div class="AddCat">
+        @foreach (Category c in Model)
+        {
+            <div class="carre">
+                <a asp-controller="Category" asp-action="CategoryList">@c.Titre</a>
+                <div class="ImageAddCat">
+                    <img src="~/Images/Logos/R-Linux.png" />
+                </div>
+            </div>
+        }
+    </div>
+</div>

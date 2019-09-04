@@ -1,0 +1,14 @@
+﻿@using Riddle.Models;
+@model List<User>;
+
+<div class="Container">
+    <div class="Titre">
+        <h2>Liste des Utilisateurs</h2>
+    </div>
+    @foreach (User u in Model)
+    {
+        <div>
+            Nom d'utilisateur : @u.UserName  
+        </div>
+    }
+</div>

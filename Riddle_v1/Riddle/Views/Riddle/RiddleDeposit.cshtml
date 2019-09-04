@@ -1,0 +1,67 @@
+﻿@using Riddle.Models
+
+<div class="row">
+    <div class="col-lg-12">
+        @if ((ViewBag.errors != null))
+        {
+            if ((ViewBag.errors as List<string>).Count > 0)
+            {
+                <div class="row">
+                    <div class="col-lg-12 alert alert-danger" role="alert">
+                        @foreach (string e in (ViewBag.errors as List<string>))
+                        {
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    @e
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12 DepotEnigme">
+        <form method="post" asp-controller="Riddle" asp-action="AddRiddlePost" enctype="multipart/form-data">
+            <div class="row">
+                <h2 class="col-lg-12">Ajouter une énigme</h2>
+            </div>
+            <div class="row">
+                <input type="text" name="titre" class="form-control" placeholder="Titre de l'énigme" />
+            </div>
+            <div class="row">
+                Choisissez une catégorie :
+                <select name="category" class="form-control">
+                    <option></option>
+                    @foreach (Category c in (ViewBag.CategoryList as List<Category>))
+                    {
+                        <option value="@c.Id">@c.Titre</option>
+                    }
+                </select>
+            </div>
+            <div class="row">
+                Enoncé de l'énigme :
+                <textarea name="enonce" class="form-control" placeholder="Enoncé de l'énigme">
+
+                </textarea>
+            </div>
+            <div class="row">
+                <input placeholder="Donner un indice" name="indice" type="text" class="form-control" />
+            </div>
+            <div class="row">
+                <input placeholder="Donner la solution" name="solution" type="text" class="form-control" />
+            </div>
+            <div class="row">
+                Ajouter une illustration :
+                <input type="file" name="image" multiple placeholder="Illustration" class="form-control" />
+            </div>
+            <div class="row AjoutEnigme">
+                <button type="submit" class="BtnAjoutEnigme">Ajouter l'énigme</button>
+            </div>
+        </form>
+    </div>
+</div>
+

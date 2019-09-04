@@ -1,0 +1,90 @@
+﻿
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Catamaran&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Chewy&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width" />
+    <title>_LayoutRiddle</title>
+
+    <link rel="stylesheet" href="~/css/RiddleStyle1.css" />
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    @*<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>*@
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <h1>Riddle</h1>
+    </header>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">
+            <img src="~/Images/Logos/R-logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+            Riddle
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" asp-controller="Riddle" asp-action="APropos">A propos<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Category" asp-action="CategoryList">Liste des catégories</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Riddle" asp-action="RiddleList">Liste des énigmes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="User" asp-action="Login">S'inscrire</a>
+                </li>
+                @if (ViewBag.UserName == "Admin")
+                {
+                    <li class="nav-item active">
+                        <a class="nav-link" asp-controller="Riddle" asp-action="Index">Admin<span class="sr-only">(current)</span></a>
+                    </li>
+                }
+            </ul>
+        </div>
+        @if (ViewBag.Logged == true)
+        {
+            <form asp-controller="User" asp-action="LogOut" class="form-inline my-2 my-lg-0">
+                <label class="Welcome"><strong>Welcome @ViewBag.UserName</strong></label>
+                <button class="btn btn-info" type="submit">Se déconnecter</button>
+            </form>
+        }
+        else
+        {
+            <form asp-controller="User" asp-action="LoginPost" class="form-inline my-2 my-lg-0">
+                <input name="Email" class="form-control mr-sm-2" type="text" placeholder="Email" aria-label="Search">
+                <input name="Password" class="form-control mr-sm-2" type="password" placeholder="Password" aria-label="Search">
+                <button class="btn btn-secondary" type="submit">Se connecter</button>
+            </form>
+        }
+    </nav>
+    
+    <section class="container">
+        @RenderBody()
+    </section>
+
+    <footer>
+
+        Copyright &copy; Riddle - JPG CREATION - Août 2019
+
+    </footer>
+
+</body>
+
+</html>

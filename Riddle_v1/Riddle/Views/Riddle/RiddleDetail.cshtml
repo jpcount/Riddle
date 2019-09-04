@@ -1,0 +1,88 @@
+﻿@using Riddle.Models;
+@model List<Riddle1>
+
+
+@foreach (Riddle1 r in Model)
+{
+    @*<div class="container-fluid text-center">
+        <div class="card" style="width: 18rem;">
+            <img src="~/@r.Image[0].Url" class="card-img-top" alt="..." width="200" height="200">
+            <div class="card-body text-center">
+                <h5 class="card-title">@r.Titre</h5>
+                <p class="card-text">@r.Enonce</p>
+                <p>@r.DatePublication</p>
+                <div class="dropdown text-center">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Afficher la solution
+                    </button>
+                    <div class="dropdown-menu p-4 text-muted " style="max-width: 500px;">
+                        <p class="text-center">
+                            @r.Solution
+                        </p>
+                        <p class="mb-6 text-center">
+                            @r.Indice
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>*@
+    <div class="">
+        <div class="card mb-3 pageDetail" style="max-width: 700px;">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img src="~/@r.Image[0].Url" class="card-img" alt="Responsive image" width="200" height="200">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">@r.Titre</h5>
+                        <p class="text-justify">@r.Enonce</p>
+                        <p class="card-text text-center"><small class="text-muted">@r.DatePublication</small></p>
+                        <div class="dropdown text-center">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Afficher la solution
+                            </button>
+                            <div class="dropdown-menu p-4 text-muted " style="width: 700px;">
+                                <p class="text-center">
+                                    @r.Solution
+                                </p>
+                                <p class="mb-6 text-justify">
+                                    @r.Indice
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*<div class="">
+            <div>
+                <h2 class="TitreRiddleDetail">@r.Titre</h2>
+            </div>
+            <div class="text-center">
+                <img src="~/@r.Image[0].Url" alt="..." class="img-thumbnail text-center" width="200" height="200">
+            </div>
+            <div class="text-center">
+                <p>@r.Enonce</p>
+                <p>@r.DatePublication</p>
+            </div>
+            <div class="dropdown text-center">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Afficher la solution
+                </button>
+                <div class="dropdown-menu p-4 text-muted " style="max-width: 500px;">
+                    <p class="text-center">
+                        @r.Solution
+                    </p>
+                    <p class="mb-6 text-center">
+                        @r.Indice
+                    </p>
+                </div>
+            </div>
+        </div>*@
+}
+
+
+
+
