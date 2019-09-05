@@ -1,5 +1,3 @@
-using System;
-
 namespace Riddle.Models
 {
     public class ErrorViewModel

@@ -117,7 +117,7 @@ namespace Riddle.Controllers
 
                 }
                 r.AddRiddle();
-                
+
             }
             return RedirectToAction("RiddleList", r);
             //return View("RiddleList", r);
